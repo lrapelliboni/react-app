@@ -3,7 +3,8 @@ import Store from '../components/Store'
 import { fetchStoreItems, addItem } from '../actions'
 
 const mapStateToProps = (state, ownProps) => ({
-    items: state.store.items
+    items: state.store.items,
+    loaded: state.store.loaded
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -13,7 +13,8 @@ export function fetchStoreItems() {
 
 export const fetchStoreItemsSuccess = items => ({
   type: 'FETCH_STORE_ITEMS_SUCCESS',
-  items
+  items,
+  loaded: true
 });
 
 // cart

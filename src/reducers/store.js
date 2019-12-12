@@ -3,7 +3,8 @@ const store = (state = [], action) => {
         case 'FETCH_STORE_ITEMS_SUCCESS':
             return {
                 ...state,
-                items: action.items
+                items: action.items,
+                loaded: action.loaded
             };
         default:
             return state

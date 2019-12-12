@@ -7,9 +7,8 @@ import Store from './Store'
 import TopMenu from './TopMenu'
 const Root = ({ store }) => (
   <Provider store={store}>
-    
     <Router>
-    <TopMenu />
+      <TopMenu />
       <Route path="/" exact={true} component={Store} />
       <Route path="/cart" component={Cart} />
     </Router>

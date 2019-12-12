@@ -1,9 +1,9 @@
 const cart = (state = [], action) => {
     switch (action.type) {
         case 'ADD_ITEM': {
-            if (action.item.quantity == 0) action.item.quantity = 1;
-            let found = state.items.findIndex(el => el.id == action.item.id);
-            if (found == -1) {
+            if (action.item.quantity === 0) action.item.quantity = 1;
+            let found = state.items.findIndex(el => el.id === action.item.id);
+            if (found === -1) {
                 return {
                     ...state,
                     items: [...state.items, action.item]
@@ -25,7 +25,7 @@ const cart = (state = [], action) => {
             }
         }
         case 'ADD_QUANTITY': {
-            let found = state.items.findIndex(el => el.id == action.item.id);
+            let found = state.items.findIndex(el => el.id === action.item.id);
             return {
                 ...state,
                 items: state.items.map(
@@ -35,7 +35,7 @@ const cart = (state = [], action) => {
             }
         }
         case 'REMOVE_QUANTITY': {
-            let found = state.items.findIndex(el => el.id == action.item.id);
+            let found = state.items.findIndex(el => el.id === action.item.id);
             return {
                 ...state,
                 items: state.items.map(

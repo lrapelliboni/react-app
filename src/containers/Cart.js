@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addItem, removeItem, addQuantity, removeQuantity } from '../actions'
+import { removeItem, addQuantity, removeQuantity } from '../actions'
 import Cart from '../components/Cart'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -7,7 +7,6 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    addItem: (item) => dispatch(addItem(item)),
     removeItem: (item) => dispatch(removeItem(item)),
     addQuantity: (item) => dispatch(addQuantity(item)),
     removeQuantity: (item) => dispatch(removeQuantity(item))

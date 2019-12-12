@@ -9,22 +9,24 @@ class Store extends Component {
     }
 
     createList() {
-        const { items, addItem } = this.props;
+        const { items, loaded, addItem } = this.props;
+        if (!loaded) 
+            return (<p>Carregando...</p>)
         return items.map((item) => {
             return (
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
+                <div className="col-lg-4 col-md-6 mb-4">
+                    <div className="card h-100">
                         <div className="text-center" style={{ marginTop: '20px' }}>
                             <img width="200" height="200" src={item.image} alt={item.title} />
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">
+                        <div className="card-body">
+                            <h4 className="card-title">
                                 <a href="javascript:void(0);">{(item.title).substring(0, 50) + '...'}</a>
                             </h4>
                             <h5>{(item.price).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h5>
-                            <p class="card-text">{(item.description).substring(0, 100) + '...'}</p>
+                            <p className="card-text">{(item.description).substring(0, 100) + '...'}</p>
                         </div>
-                        <div class="card-footer text-center">
+                        <div className="card-footer text-center">
                             <button className="btn btn-primary" onClick={() => addItem(item)}>Adicionar ao Carrinho</button>
                         </div>
                     </div>
@@ -47,6 +49,7 @@ class Store extends Component {
 
 Store.propTypes = {
     items: PropTypes.array.isRequired,
+    loaded: PropTypes.bool.isRequired,
     fetchStoreItems: PropTypes.func.isRequired,
     addItem: PropTypes.func.isRequired
 }
