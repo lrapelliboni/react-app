@@ -1,0 +1,6 @@
+.store-items {
+    position: absolute;
+    z-index: 1;
+    margin-top: 0px;
+    width: 84vw;
+}
