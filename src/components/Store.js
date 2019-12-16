@@ -3,16 +3,40 @@ import PropTypes from 'prop-types'
 import '../assets/css/store.css';
 
 class Store extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { filteredItems: [] };
+    }
+
     componentDidMount() {
         const { fetchStoreItems } = this.props;
         fetchStoreItems();
     }
 
+    handleKeyUp(event) {
+        let query = event.target.value;
+        const { items } = this.props;
+        this.setState({
+            filteredItems: items.filter(item => {
+                return item.title.toLowerCase().indexOf(query.toLowerCase()) > -1
+                    || item.id == query
+            })
+        }) 
+    }
+
     createList() {
         const { items, loaded, addItem } = this.props;
-        if (!loaded) 
+        const { filteredItems } = this.state;
+
+        let iterable = items;
+        console.log(filteredItems);
+        if (!loaded)
             return (<p>Carregando...</p>)
-        return items.map((item) => {
+
+        if (filteredItems.length > 0) 
+            iterable = filteredItems;
+
+        return iterable.map((item) => {
             return (
                 <div className="col-lg-4 col-md-6 mb-4">
                     <div className="card h-100">
@@ -39,6 +63,12 @@ class Store extends Component {
         return (
             <div>
                 <h1>Produtos</h1>
+                <div className="row">
+                    <div className="col-lg-4 col-md-6 mb-4">
+                        <label>Buscar</label>
+                        <input onKeyUp={(e) => this.handleKeyUp(e)} className="form-control" type="search" placeholder="Por: código / nome" />
+                    </div>
+                </div>
                 <div className="row store-items">
                     {this.createList()}
                 </div>

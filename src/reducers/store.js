@@ -5,7 +5,7 @@ const store = (state = [], action) => {
                 ...state,
                 items: action.items,
                 loaded: action.loaded
-            };
+            }
         default:
             return state
     }
