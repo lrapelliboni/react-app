@@ -1,5 +1,5 @@
-# kabum-app
-Kabum! App
+# react-app
+React! App
 
 ## Available Scripts
 
